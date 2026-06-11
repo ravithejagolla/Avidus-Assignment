@@ -7,6 +7,10 @@ Avidus Workspace is a secure full-stack web application featuring Role-Based Acc
 - **Backend**: Node.js, Express, MongoDB (Mongoose)
 - **Frontend**: React (Vite, Lucide React, Vanilla CSS)
 
+## Deployed App
+- **Backend**: https://avidus-assignment-upt2.onrender.com/ (Deployed on Render)
+- **Frontend**: https://avidus-assignment.netlify.app/dashboard (Deployed on Netlify)
+
 ## Directory Structure
 ```
 Avidus-Assignment/
