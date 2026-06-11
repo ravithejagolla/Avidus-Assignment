@@ -118,6 +118,17 @@ Follow these steps to set up the project locally:
    npm run dev
    ```
 
+## Credentials
+For testing role-based access control, use the following default user credentials:
+
+### Admin User
+- **Email**: `avidusadmin@gmail.com`
+- **Password**: `Avidusadmin@123`
+
+### Normal User
+- **Email**: `avidususer@gmail.com`
+- **Password**: `Avidususer@123`
+
 ## API Endpoints
 
 ### Authentication
