@@ -59,11 +59,11 @@ const AdminDashboard = () => {
           fetch(`${API_URL}/admin/analytics`, {
             headers: { Authorization: `Bearer ${token}` }
           }),
-          fetch(`${API_URL}/tasks`, {
+          fetch(`${API_URL}/tasks?all=true`, {
             headers: { Authorization: `Bearer ${token}` }
           })
         ]);
-        
+
         const dataAnalytics = await resAnalytics.json();
         const dataTasks = await resTasks.json();
 
@@ -82,7 +82,7 @@ const AdminDashboard = () => {
         else setError(data.error || 'Failed to load users');
       } else if (activeTab === 'tasks') {
         // Admin GET /tasks gets all tasks
-        const res = await fetch(`${API_URL}/tasks`, {
+        const res = await fetch(`${API_URL}/tasks?all=true`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         const data = await res.json();
@@ -189,7 +189,7 @@ const AdminDashboard = () => {
   const filteredUsers = usersList.filter(u =>
     u._id !== user?.id &&
     (u.name.toLowerCase().includes(userSearch.toLowerCase()) ||
-     u.email.toLowerCase().includes(userSearch.toLowerCase()))
+      u.email.toLowerCase().includes(userSearch.toLowerCase()))
   );
 
   const filteredTasks = tasksList.filter(t =>
@@ -210,8 +210,8 @@ const AdminDashboard = () => {
           <Database size={24} style={{ color: 'var(--color-primary)' }} />
           <span style={{ fontSize: '1.25rem', fontFamily: 'var(--font-display)', fontWeight: '700' }} className="gradient-text">Avidus Admin</span>
         </div>
-        <button 
-          className="sidebar-toggle-btn" 
+        <button
+          className="sidebar-toggle-btn"
           onClick={() => setMobileSidebarOpen(!mobileSidebarOpen)}
           aria-label="Toggle Navigation Menu"
         >
@@ -220,8 +220,8 @@ const AdminDashboard = () => {
       </div>
 
       {/* Sidebar Backdrop Overlay */}
-      <div 
-        className={`sidebar-overlay ${mobileSidebarOpen ? 'open' : ''}`} 
+      <div
+        className={`sidebar-overlay ${mobileSidebarOpen ? 'open' : ''}`}
         onClick={() => setMobileSidebarOpen(false)}
       />
 
@@ -492,7 +492,7 @@ const AdminDashboard = () => {
                             </span>
                             <span style={{ fontSize: '0.75rem', color: 'var(--text-dark)' }}>Created by:</span>
                             <span className="badge badge-user" style={{ fontSize: '0.7rem' }}>
-                              {t.user?.name || 'Unknown User'} ({t.user?.email || 'N/A'})
+                              {t.user?.name || 'Unknown User'}
                             </span>
                           </div>
                         </div>
