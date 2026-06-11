@@ -9,7 +9,7 @@ Avidus Workspace is a secure full-stack web application featuring Role-Based Acc
 
 ## Deployed App
 - **Backend**: https://avidus-assignment-upt2.onrender.com/ (Deployed on Render)
-- **Frontend**: https://avidus-assignment.netlify.app/dashboard (Deployed on Netlify)
+- **Frontend**: https://avidus-assignment.netlify.app/ (Deployed on Netlify)
 
 ## Directory Structure
 ```
