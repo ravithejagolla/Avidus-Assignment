@@ -8,7 +8,7 @@ import argon2 from 'argon2'
 // Generate JWT Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: '30d'
+    expiresIn: '24h'
   });
 };
 
@@ -35,6 +35,13 @@ export const register = async (req, res) => {
       email,
       password: hashPassword,
       role: userRole
+    });
+
+    // Log Activity: LOGIN
+    await ActivityLog.create({
+      user: user._id,
+      action: 'LOGIN',
+      details: `User "${user.name}" (${user.role}) logged in via signup`
     });
 
     res.status(201).json({

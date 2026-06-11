@@ -31,18 +31,18 @@ export const createTask = async (req, res) => {
   }
 };
 
-// @desc    Get all tasks (Admin views all, User views own only)
+// @desc    Get all tasks (Admin views all via query param, User/Admin views own by default)
 // @route   GET /api/tasks
 // @access  Private
 export const getTasks = async (req, res) => {
   try {
     let tasks;
 
-    if (req.user.role === 'Admin') {
+    if (req.query.all === 'true' && req.user.role === 'Admin') {
       // Admin views all tasks, populate user info
       tasks = await Task.find().populate('user', 'name email role status');
     } else {
-      // Normal user views own tasks only
+      // Normal user (or Admin on personal dashboard) views own tasks only
       tasks = await Task.find({ user: req.user.id }).populate('user', 'name email');
     }
 
